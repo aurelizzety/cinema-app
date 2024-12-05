@@ -56,7 +56,7 @@
 
         <!-- Pagination -->
         <div class="mt-4">
-            {{ $movies->links() }}
+            {{ $movies->links('pagination::tailwind') }}
         </div>
     </div>
 @endsection

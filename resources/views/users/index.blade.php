@@ -53,7 +53,7 @@
 
         <!-- Pagination -->
         <div class="mt-4">
-            {{ $users->links() }}
+            {{ $users->links('pagination::tailwind') }}
         </div>
     </div>
 @endsection
