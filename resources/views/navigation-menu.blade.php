@@ -28,6 +28,10 @@
                     <x-nav-link href="{{ route('schedules.index') }}" :active="request()->routeIs('schedules.index')">
                         {{ __('Schedule') }}
                     </x-nav-link>
+                    <!-- Link ke Seat Index -->
+                    <x-nav-link href="{{ route('seats.index') }}" :active="request()->routeIs('seats.index')">
+                        {{ __('Seat') }}
+                    </x-nav-link>
                 </div>
             </div>
 
