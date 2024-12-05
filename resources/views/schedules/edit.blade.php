@@ -1,0 +1,51 @@
+@extends('layouts.app')
+
+@section('content')
+    <div class="max-w-7xl mx-auto p-6 bg-white rounded-lg shadow-md">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Edit Schedule</h2>
+
+        <form action="{{ route('schedules.update', $schedule->id) }}" method="POST">
+            @csrf
+            @method('PUT')
+
+            <div class="mb-4">
+                <label for="date" class="block text-sm font-medium text-gray-600">Date</label>
+                <input type="date" id="date" name="date" value="{{ old('date', $schedule->date) }}" 
+                       class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
+                @error('date')
+                    <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="mb-4">
+                <label for="time" class="block text-sm font-medium text-gray-600">Time</label>
+                <input type="time" id="time" name="time" value="{{ old('time', $schedule->time) }}" 
+                       class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
+                @error('time')
+                    <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="mb-4">
+                <label for="price" class="block text-sm font-medium text-gray-600">Price</label>
+                <input type="number" id="price" name="price" value="{{ old('price', $schedule->price) }}" 
+                       class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
+                @error('price')
+                    <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="flex justify-between mt-6">
+                <!-- Tombol Kembali ke Index (Pojok Kiri) -->
+                <a href="{{ route('schedules.index') }}" class="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600">
+                    Back
+                </a>
+
+                <!-- Tombol Simpan Perubahan (Pojok Kanan) -->
+                <button type="submit" class="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600">
+                    Update Schedule
+                </button>
+            </div>
+        </form>
+    </div>
+@endsection

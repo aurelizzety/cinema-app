@@ -13,7 +13,7 @@ class SeatSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i = 1; $i <= 50; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             Seat::create([
                 'schedule_id' => 1, // Jadwal ID untuk 'Ride Your Wave'
                 'seat_number' => 'A' . $i,
@@ -21,7 +21,7 @@ class SeatSeeder extends Seeder
             ]);
         }
 
-        for ($i = 1; $i <= 30; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             Seat::create([
                 'schedule_id' => 2, // Jadwal ID untuk 'Josee, the Tiger and the Fish'
                 'seat_number' => 'B' . $i,
