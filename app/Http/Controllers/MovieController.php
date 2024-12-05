@@ -44,9 +44,14 @@ class MovieController extends Controller
             'genre' => 'required|string|max:100',
         ]);
 
-        Movie::create($request->all());
+        Movie::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'duration' => $request->duration,
+            'genre' => $request->genre,
+        ]);
 
-        return redirect()->route('movies.index')->with('success', 'Movie created successfully!');
+        return redirect()->route('movies.index');
     }
 
     /**
@@ -54,7 +59,8 @@ class MovieController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $movie = Movie::findOrFail($id);
+        return view('movies.show', compact('movie'));
     }
 
     /**
@@ -62,22 +68,33 @@ class MovieController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $movie = Movie::findOrFail($id);
+        return view('movies.edit', compact('movie'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Movie $movie)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'duration' => 'required|integer',
+            'genre' => 'required|string|max:100',
+        ]);
+
+        $movie->update($request->only(['title', 'description', 'duration', 'genre']));
+
+        return redirect()->route('movies.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Movie $movie)
     {
-        //
+        $movie->delete();
+        return redirect()->route('movies.index');
     }
 }

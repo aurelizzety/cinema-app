@@ -3,11 +3,11 @@
 @section('content')
     <div class="max-w-7xl mx-auto p-6 bg-white rounded-lg shadow-md">
         <div class="flex justify-between items-center mb-4">
-            <h2 class="text-2xl font-semibold text-gray-800">Movies List</h2>
+            <h2 class="text-2xl font-semibold text-gray-800">Movie List</h2>
             <button 
                 onclick="window.location.href='{{ route('movies.create') }}'" 
                 class="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600">
-                Create New Movie
+                Create New Movie 
             </button>
         </div>        
               

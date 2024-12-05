@@ -20,6 +20,10 @@
                     <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
                         {{ __('Users') }}
                     </x-nav-link>
+                    <!-- Link ke Movie Index -->
+                    <x-nav-link href="{{ route('movies.index') }}" :active="request()->routeIs('movies.index')">
+                        {{ __('Movie') }}
+                    </x-nav-link>
                 </div>
             </div>
 
