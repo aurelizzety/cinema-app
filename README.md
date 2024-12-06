@@ -108,7 +108,7 @@ cinema-app/
 
 ---
 
-### Tampilkan Aplikasi
+### Tampilan Aplikasi
 ![](https://github.com/aurelizzety/cinema-app/blob/main/app-view.png)
 
 ---
