@@ -30,7 +30,7 @@
 - **Frontend**: Blade dan Tailwind CSS  
 - **Database**: MySQL  
 - **Framework Otentikasi**: Laravel Jetstream  
-- **Runtime**: PHP versi 8.2.0  
+- **Bahasa Pemrograman**: PHP versi 8.2.0  
 - **Server Lokal**: Laragon versi 6.0  
 - **Editor Kode**: Visual Studio Code versi 1.95.2  
 - **Pengujian API**: Postman versi 11.19 
@@ -76,12 +76,40 @@ Berikut adalah deskripsi singkat mengenai tabel-tabel dalam basis data:
 ---
 
 ### Struktur Utama Proyek
-
+```
+cinema-app/
+├── app/                
+│   ├── Http/Controllers/	  # Controller aplikasi (logika permintaan dan respon)
+│   ├── Models/			        # Model untuk interaksi dengan database
+│   ├── Providers/		      # Penyedia layanan untuk konfigurasi aplikasi
+│   ├── View/Components	    # Komponen Blade untuk UI
+├── database/
+│   ├── factories/		      # Factory untuk data dummy pengujian
+│   ├── migrations/		      # Skrip migrasi untuk tabel database
+│   ├── seeders/			      # Seeder untuk data dummy
+├── public/			            # Aset publik (CSS, JS, gambar)
+│   ├── images/			        # Gambar untuk aplikasi
+├── resources/
+│   ├── js/			            # Script frontend (Vue.js, JS)
+│   ├── views/			        # Template Blade untuk UI
+│   ├── views/movies		    # Folder Template Blade film
+│   ├── views/schedules		  # Folder Template Blade jadwal
+│   ├── views/seats		      # Folder Template Blade kursi
+│   ├── views/transactions	# Folder Template Blade transaksi
+│   ├── views/users		      # Folder Template Blade pengguna
+├── routes/
+│   ├── api.php			        # Routing API
+│   ├── web.php			        # Routing web
+├── tests/				          # Direktori pengujian
+│   ├── Unit			          # Unit testing aplikasi
+└── .env				            # Konfigurasi aplikasi
+└── .env.testing			      # Konfigurasi pengujian
+```
 
 ---
 
 ### Tampilkan Aplikasi
-
+![](https://github.com/aurelizzety/cinema-app/blob/main/app-view.png)
 
 ---
 
