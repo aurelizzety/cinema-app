@@ -79,31 +79,31 @@ Berikut adalah deskripsi singkat mengenai tabel-tabel dalam basis data:
 ```
 cinema-app/
 ├── app/                
-│   ├── Http/Controllers/	  # Controller aplikasi (logika permintaan dan respon)
-│   ├── Models/			        # Model untuk interaksi dengan database
-│   ├── Providers/		      # Penyedia layanan untuk konfigurasi aplikasi
-│   ├── View/Components	    # Komponen Blade untuk UI
+│   ├── Http/Controllers/     # Controller aplikasi (logika permintaan dan respon)
+│   ├── Models/     # Model untuk interaksi dengan database
+│   ├── Providers/      # Penyedia layanan untuk konfigurasi aplikasi
+│   ├── View/Components     # Komponen Blade untuk UI
 ├── database/
-│   ├── factories/		      # Factory untuk data dummy pengujian
-│   ├── migrations/		      # Skrip migrasi untuk tabel database
-│   ├── seeders/			      # Seeder untuk data dummy
-├── public/			            # Aset publik (CSS, JS, gambar)
-│   ├── images/			        # Gambar untuk aplikasi
+│   ├── factories/      # Factory untuk data dummy pengujian
+│   ├── migrations/     # Skrip migrasi untuk tabel database
+│   ├── seeders/      # Seeder untuk data dummy
+├── public/     
+│   ├── images/     # Gambar untuk aplikasi
 ├── resources/
-│   ├── js/			            # Script frontend (Vue.js, JS)
-│   ├── views/			        # Template Blade untuk UI
-│   ├── views/movies		    # Folder Template Blade film
-│   ├── views/schedules		  # Folder Template Blade jadwal
-│   ├── views/seats		      # Folder Template Blade kursi
-│   ├── views/transactions	# Folder Template Blade transaksi
-│   ├── views/users		      # Folder Template Blade pengguna
+│   ├── js/     # Script frontend (Vue.js, JS)
+│   ├── views/      # Template Blade untuk UI
+│   ├── views/movies      # Folder Template Blade film
+│   ├── views/schedules     # Folder Template Blade jadwal
+│   ├── views/seats     # Folder Template Blade kursi
+│   ├── views/transactions      # Folder Template Blade transaksi
+│   ├── views/users     # Folder Template Blade pengguna
 ├── routes/
-│   ├── api.php			        # Routing API
-│   ├── web.php			        # Routing web
-├── tests/				          # Direktori pengujian
-│   ├── Unit			          # Unit testing aplikasi
-└── .env				            # Konfigurasi aplikasi
-└── .env.testing			      # Konfigurasi pengujian
+│   ├── api.php     # Routing API
+│   ├── web.php     # Routing web
+├── tests/
+│   ├── Unit      # Unit testing aplikasi
+└── .env      # Konfigurasi aplikasi
+└── .env.testing      # Konfigurasi pengujian
 ```
 
 ---
