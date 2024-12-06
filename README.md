@@ -1,66 +1,133 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Cinema App
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+### Disusun oleh: Aurel Izzety
 
-## About Laravel
+### Pendahuluan
+**Nama Aplikasi**: Cinema App  
+**Platform**: Website  
+**Deskripsi singkat**: Cinema App adalah sebuah platform sederhana untuk mengelola data pengguna, jadwal film, dan transaksi tiket. Aplikasi ini memungkinkan pengguna untuk memesan tiket dan memilih kursi yang tersedia dengan algoritma penjadwalan kursi.  
+**Tujuan**: Memenuhi tugas praktik demonstrasi uji kompetensi skema analis program batch 3 2024.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Fitur Aplikasi
+- **Manajemen Pengguna**  
+  CRUD data pengguna (Admin, User).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Manajemen Jadwal Film**  
+  CRUD data jadwal film (judul, waktu tayang, harga tiket, durasi).
 
-## Learning Laravel
+- **Transaksi Tiket**  
+  Pemesanan tiket dengan algoritma penjadwalan kursi.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Validasi Kursi**  
+  Kursi yang sudah dipesan tidak dapat dipilih kembali oleh pengguna lain.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Perangkat Lunak yang Digunakan dalam Pengembangan Cinema App 
+- **Backend**: Laravel versi 11.34.2  
+- **Frontend**: Blade dan Tailwind CSS  
+- **Database**: MySQL  
+- **Framework Otentikasi**: Laravel Jetstream  
+- **Runtime**: PHP versi 8.2.0  
+- **Server Lokal**: Laragon versi 6.0  
+- **Editor Kode**: Visual Studio Code versi 1.95.2  
+- **Pengujian API**: Postman versi 11.19 
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Rancangan Basis Data
+Rancangan basis data untuk aplikasi ini telah diimplementasikan menggunakan **migration** Laravel. Detail migrasi database di direktori berikut:
+`database/migrations/`
 
-### Premium Partners
+Berikut adalah deskripsi singkat mengenai tabel-tabel dalam basis data:
+#### Tabel `users`
+- **Tujuan**: Menyimpan data pengguna (Admin dan User).  
+- **Atribut**: `id`, `name`, `email`, `password`, `role`, `timestamps`  
+- **Relasi**:  
+  - Relasi 1:M dengan tabel `transactions` melalui `user_id`.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+#### Tabel `movies`
+- **Tujuan**: Menyimpan data film.  
+- **Atribut**: `id`, `title`, `description`, `duration`, `genre`, `timestamps`  
+- **Relasi**:  
+  - Relasi 1:M dengan tabel `schedules` melalui `movie_id`.
 
-## Contributing
+#### Tabel `schedules`
+- **Tujuan**: Menyimpan jadwal penayangan film.  
+- **Atribut**: `id`, `movie_id`, `date`, `time`, `price`, `timestamps`  
+- **Relasi**:  
+  - Relasi 1:M dengan tabel `seats` melalui `schedule_id`.  
+  - Relasi 1:M dengan tabel `transactions` melalui `schedule_id`.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+#### Tabel `seats`
+- **Tujuan**: Menyimpan data kursi untuk setiap jadwal film.  
+- **Atribut**: `id`, `schedule_id`, `seat_number`, `is_booked`, `timestamps`  
+- **Relasi**:  
+  - Relasi 1:1 dengan tabel `transactions` melalui `seat_id`.
 
-## Code of Conduct
+#### Tabel `transactions`
+- **Tujuan**: Menyimpan data transaksi tiket.  
+- **Atribut**: `id`, `user_id`, `schedule_id`, `seat_id`, `total_price`, `status`, `timestamps`  
+- **Relasi**:  
+  - Relasi dengan tabel `users`, `schedules`, dan `seats`.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+### Struktur Utama Proyek
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Tampilkan Aplikasi
+
+
+---
+
+### Cara Menjalankan Aplikasi
+1. **Clone repository ini**:
+```bash
+git clone https://github.com/aurelizzety/cinema-app.git
+```
+
+2. **Masuk ke direktori aplikasi**:
+```bash
+cd cinema-app
+```
+
+3. **Instal dependensi aplikasi**:
+```bash
+composer install
+```
+
+4. **Buat file .env**:
+```bash
+cp .env.example .env
+```
+
+5. **Jalankan perintah untuk melakukan generate key**:
+```bash
+php artisan key:generate
+```
+
+6. **Migrasi database**:
+```bash
+php artisan migrate
+```
+
+7. **Install npm dependency**:
+```bash
+npm install
+```
+
+8. **Jalankan server**:
+```bash
+php artisan serve
+```
+Aplikasi akan berjalan pada `http://localhost:8000`.
+
+9. **Pengujian Unit**:
+```bash
+php artisan test tests/Unit
+```
