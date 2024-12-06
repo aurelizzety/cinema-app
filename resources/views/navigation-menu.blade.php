@@ -32,6 +32,10 @@
                     <x-nav-link href="{{ route('seats.index') }}" :active="request()->routeIs('seats.index')">
                         {{ __('Seat') }}
                     </x-nav-link>
+                    <!-- Link ke Transaction Index -->
+                    <x-nav-link href="{{ route('transactions.index') }}" :active="request()->routeIs('transactions.index')">
+                        {{ __('Transaction') }}
+                    </x-nav-link>
                 </div>
             </div>
 

@@ -31,3 +31,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('seats', SeatController::class);
     Route::resource('transactions', TransactionController::class);
 });
+
+Route::get('/transactions/seats/{schedule_id}', [TransactionController::class, 'getSeatsBySchedule']);
